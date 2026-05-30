@@ -2,257 +2,391 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Актуальные VPN-подписки от igareck</title>
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      body {
-        font-family:
-          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        background: #0d1117;
-        color: #c9d1d9;
-        padding: 20px;
-      }
-      .container {
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-      h1 {
-        color: #f0f6fc;
-        margin-bottom: 10px;
-      }
-      .subtitle {
-        color: #8b949e;
-        margin-bottom: 30px;
-      }
-      .last-update {
-        background: #161b22;
-        padding: 10px 15px;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        font-size: 14px;
-        border-left: 3px solid #3fb950;
-      }
-      .category {
-        background: #161b22;
-        border-radius: 12px;
-        margin-bottom: 30px;
-        overflow: hidden;
-        border: 1px solid #30363d;
-      }
-      .category h2 {
-        background: #21262d;
-        padding: 15px 20px;
-        font-size: 1.3rem;
-        border-bottom: 1px solid #30363d;
-        color: #f0f6fc;
-      }
-      .link-list {
-        padding: 0;
-        list-style: none;
-      }
-      .link-list li {
-        padding: 15px 20px;
-        border-bottom: 1px solid #30363d;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: 10px;
-      }
-      .link-list li:last-child {
-        border-bottom: none;
-      }
-      .file-name {
-        font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
-        font-size: 14px;
-        color: #79c0ff;
-        word-break: break-word;
-        flex: 1;
-      }
-      .raw-url {
-        font-family: monospace;
-        font-size: 12px;
-        color: #8b949e;
-        background: #0d1117;
-        padding: 8px 12px;
-        border-radius: 6px;
-        word-break: break-all;
-        flex: 2;
-      }
-      .copy-btn {
-        background: #238636;
-        color: white;
-        border: none;
-        padding: 6px 12px;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 12px;
-      }
-      .copy-btn:hover {
-        background: #2ea043;
-      }
-      .loading {
-        text-align: center;
-        padding: 40px;
-        color: #8b949e;
-      }
-      .error {
-        color: #f85149;
-        background: #161b22;
-        padding: 20px;
-        border-radius: 8px;
-      }
-      a {
-        color: #58a6ff;
-        text-decoration: none;
-      }
-      @media (max-width: 768px) {
-        .link-list li {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-        .raw-url {
-          width: 100%;
-        }
-        .copy-btn {
-          align-self: flex-end;
-        }
-      }
-    </style>
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    />
+    <meta
+      name="theme-color"
+      content="#0b0e11"
+      media="(prefers-color-scheme: dark)"
+    />
+    <meta
+      name="theme-color"
+      content="#f7f8f9"
+      media="(prefers-color-scheme: light)"
+    />
+    <title>VPN Hub · Подписки от igareck</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="container">
-      <h1>🔗 Актуальные подписки от igareck</h1>
-      <p class="subtitle">
-        Автоматически обновляемые RAW-ссылки для обхода блокировок
-      </p>
-      <div id="last-update" class="last-update">
-        ⏳ Загрузка списка файлов...
+    <div class="app-shell">
+      <!-- Текстура фона -->
+      <div class="bg-texture" aria-hidden="true"></div>
+
+      <!-- Основной контент -->
+      <main class="main-content" id="mainContent">
+        <div class="container">
+          <!-- Шапка -->
+          <header class="header">
+            <div class="header-row">
+              <a href="index.html" class="logo-link">
+                <div class="logo">
+                  <div class="logo-icon" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+                      <path
+                        d="M16 2L3 9L16 16L29 9L16 2Z"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3 16L16 23L29 16"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                      <path
+                        d="M3 23L16 30L29 23"
+                        stroke="currentColor"
+                        stroke-width="1.8"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </div>
+                  <span class="logo-text">VPN<span>Hub</span></span>
+                </div>
+              </a>
+              <button
+                class="theme-toggle"
+                id="themeToggle"
+                aria-label="Переключить тему"
+              >
+                <svg
+                  class="icon-sun"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <circle cx="12" cy="12" r="5" />
+                  <path
+                    d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+                  />
+                </svg>
+                <svg
+                  class="icon-moon"
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                </svg>
+              </button>
+            </div>
+            <div class="header-hero">
+              <h1 class="hero-title">
+                Актуальные <span class="text-accent">ссылки</span>
+              </h1>
+              <p class="hero-sub">
+                Автообновляемые RAW‑ссылки для обхода блокировок из репозитория
+                igareck
+              </p>
+            </div>
+          </header>
+
+          <!-- Статус -->
+          <div class="status-bar" id="statusCard">
+            <!-- <div class="status-indicator" aria-hidden="true">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <path d="M12 6v6l4 2" />
+              </svg>
+            </div> -->
+            <div class="status-details">
+              <span class="status-time" id="lastUpdate"
+                ><svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="icon icon-tabler icons-tabler-outline icon-tabler-building-broadcast-tower"
+                >
+                  <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                  <path d="M11 12a1 1 0 1 0 2 0a1 1 0 1 0 -2 0" />
+                  <path d="M16.616 13.924a5 5 0 1 0 -9.23 0" />
+                  <path d="M20.307 15.469a9 9 0 1 0 -16.615 0" />
+                  <path d="M9 21l3 -9l3 9" />
+                  <path d="M10 19h4" />
+                </svg>
+                Загрузка списка...</span
+              >
+              <span class="status-count" id="fileCount"></span>
+            </div>
+            <button class="refresh-btn" id="refreshBtn" aria-label="Обновить">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path d="M23 4v6h-6M1 20v-6h6" />
+                <path
+                  d="M3.51 9a9 9 0 0 1 14.85-3.36M20.49 15a9 9 0 0 1-14.85 3.36"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- Категории -->
+          <div id="categoriesContainer"></div>
+
+          <!-- Благодарность + Дисклеймер -->
+          <section class="thanks-card">
+            <!-- <div class="thanks-icon">🙏</div> -->
+            <p class="thanks-text">
+              Огромная благодарность
+              <a
+                href="https://github.com/igareck"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="thanks-link"
+                >igareck</a
+              >
+              за неустанную поддержку и конфигурации, которые делают интернет
+              свободнее.
+            </p>
+
+            <hr class="thanks-divider" />
+
+            <ol class="disclaimer-list">
+              <li>1. Сайт носит исключительно информационный характер</li>
+              <li>
+                2. Все ссылки ведут на публичные репозитории и не являются
+                собственностью автора
+              </li>
+              <li>
+                3. Автор не предоставляет VPN-сервисы и не призывает к их
+                использованию
+              </li>
+              <li>
+                4. Ответственность за использование информации несёт
+                пользователь
+              </li>
+              <li>
+                5. Используйте технологии только в соответствии с
+                законодательством вашей страны
+              </li>
+            </ol>
+          </section>
+
+          <!-- Футер -->
+          <footer class="footer">
+            <div class="footer-igareck">
+              <span
+                >Подписки из
+                <a
+                  href="https://github.com/igareck/vpn-configs-for-russia"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >igareck/vpn-configs-for-russia</a
+                ></span
+              >
+            </div>
+            <!-- <span class="footer-divider">·</span> -->
+            <div class="footer-belozerov">
+              <span
+                >Сайт сделан
+                <a
+                  href="https://github.com/Belozerovmi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >belozerov</a
+                ></span
+              >
+            </div>
+          </footer>
+        </div>
+      </main>
+
+      <!-- Экран «Как пользоваться» -->
+      <div class="guide-screen" id="guideScreen">
+        <div class="guide-header">
+          <h2 class="guide-title">Как пользоваться</h2>
+          <button class="guide-close" id="guideClose" aria-label="Закрыть">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+        <div class="guide-body">
+          <div class="guide-step">
+            <div class="step-number">1</div>
+            <div>
+              <h3>Выберите категорию</h3>
+              <p>
+                Определите, какой у вас интернет: обычный (чёрные списки) или
+                ограниченный мобильный (белые списки). Рядом с названием
+                категории есть значок <span class="inline-hint">?</span> —
+                нажмите, чтобы узнать подробности.
+              </p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-number">2</div>
+            <div>
+              <h3>Скопируйте RAW‑ссылку</h3>
+              <p>
+                В каждой карточке файла нажмите «Копировать». Ссылка сразу
+                попадёт в буфер обмена.
+              </p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-number">3</div>
+            <div>
+              <h3>Добавьте в VPN‑клиент</h3>
+              <p>
+                Вставьте ссылку в Karing, v2rayN, Streisand или другой клиент
+                как подписку. Включите автообновление раз в 1 час.
+              </p>
+            </div>
+          </div>
+          <div class="guide-step">
+            <div class="step-number">4</div>
+            <div>
+              <h3>Проверьте задержку</h3>
+              <p>
+                В клиенте запустите «Тест реальной задержки» и выберите сервер с
+                наименьшим пингом.
+              </p>
+            </div>
+          </div>
+          <div class="guide-note">
+            <p>
+              Если GitHub заблокирован — используйте зеркала из README
+              репозитория igareck (GitLab, Codeberg, GitHack).
+            </p>
+          </div>
+        </div>
       </div>
-      <div id="categories"></div>
+
+      <!-- Нижняя мобильная навигация -->
+      <nav class="bottom-nav">
+        <button
+          class="nav-item active"
+          data-screen="main"
+          aria-label="Подписки"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.75"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-world-heart"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M21 12a9 9 0 1 0 -9.679 8.974" />
+            <path d="M3.6 9h16.8" />
+            <path d="M3.6 15h6.9" />
+            <path d="M11.5 3a17 17 0 0 0 0 18" />
+            <path d="M12.5 3a16.983 16.983 0 0 1 2.556 8.136" />
+            <path
+              d="M18 22l3.35 -3.284a2.143 2.143 0 0 0 .005 -3.071a2.242 2.242 0 0 0 -3.129 -.006l-.224 .22l-.223 -.22a2.242 2.242 0 0 0 -3.128 -.006a2.143 2.143 0 0 0 -.006 3.071l3.355 3.296"
+            />
+          </svg>
+          <span>Подписки</span>
+        </button>
+        <button class="nav-item" data-screen="guide" aria-label="Инструкция">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="icon icon-tabler icons-tabler-outline icon-tabler-device-ipad-question"
+          >
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path
+              d="M15 21h-9a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v6"
+            />
+            <path d="M9 18h5" />
+            <path d="M19 22v.01" />
+            <path
+              d="M19 19a2.003 2.003 0 0 0 .914 -3.782a1.98 1.98 0 0 0 -2.414 .483"
+            />
+          </svg>
+          <span>Инструкция</span>
+        </button>
+      </nav>
     </div>
 
-    <script>
-      // Получаем список файлов через GitHub API
-      async function fetchGitHubFiles() {
-        const apiUrl =
-          "https://api.github.com/repos/igareck/vpn-configs-for-russia/contents/";
+    <!-- Оверлей для всплывающих подсказок -->
+    <div class="hint-overlay" id="hintOverlay">
+      <div class="hint-card" id="hintCard">
+        <button class="hint-close" id="hintClose" aria-label="Закрыть">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M18 6L6 18M6 6l12 12" />
+          </svg>
+        </button>
+        <div class="hint-content" id="hintContent"></div>
+      </div>
+    </div>
 
-        try {
-          const response = await fetch(apiUrl, {
-            headers: {
-              Accept: "application/vnd.github.v3+json",
-              "User-Agent": "igareck-links-site",
-            },
-          });
+    <!-- Тост -->
+    <div class="toast" id="toast"></div>
 
-          if (!response.ok) throw new Error(`Ошибка API: ${response.status}`);
-
-          const files = await response.json();
-
-          // Фильтруем только .txt файлы (подписки)
-          const txtFiles = files.filter(
-            (file) => file.name.endsWith(".txt") && file.type === "file",
-          );
-
-          // Сортируем по имени
-          txtFiles.sort((a, b) => a.name.localeCompare(b.name));
-
-          displayFiles(txtFiles);
-        } catch (error) {
-          console.error("Ошибка загрузки:", error);
-          document.getElementById("last-update").innerHTML =
-            "❌ Не удалось загрузить список файлов. Попробуйте обновить страницу.";
-          document.getElementById("last-update").style.borderLeftColor =
-            "#f85149";
-        }
-      }
-
-      function displayFiles(files) {
-        const container = document.getElementById("categories");
-        const lastUpdate = document.getElementById("last-update");
-
-        const now = new Date();
-        lastUpdate.innerHTML = `📅 Актуально на: ${now.toLocaleString("ru-RU")}<br>📁 Найдено файлов: ${files.length}`;
-
-        if (files.length === 0) {
-          container.innerHTML =
-            '<div class="error">⚠️ Файлы не найдены. Возможно, репозиторий временно недоступен.</div>';
-          return;
-        }
-
-        // Группируем по категориям
-        const groups = {
-          "⚫ ЧЁРНЫЕ СПИСКИ (обход блокировок)": [],
-          "⚪ БЕЛЫЕ СПИСКИ (обход белых списков)": [],
-          "🧅 TOR BRIDGES": [],
-          "📄 ПРОЧИЕ ФАЙЛЫ": [],
-        };
-
-        files.forEach((file) => {
-          const name = file.name.toUpperCase();
-          if (name.includes("BLACK") || name.includes("SHADOWSOCKS")) {
-            groups["⚫ ЧЁРНЫЕ СПИСКИ (обход блокировок)"].push(file);
-          } else if (
-            name.includes("WHITE") ||
-            name.includes("CIDR") ||
-            name.includes("SNI")
-          ) {
-            groups["⚪ БЕЛЫЕ СПИСКИ (обход белых списков)"].push(file);
-          } else if (name.includes("TOR") || name.includes("BRIDGE")) {
-            groups["🧅 TOR BRIDGES"].push(file);
-          } else {
-            groups["📄 ПРОЧИЕ ФАЙЛЫ"].push(file);
-          }
-        });
-
-        // Отрисовываем категории
-        let html = "";
-        for (const [category, categoryFiles] of Object.entries(groups)) {
-          if (categoryFiles.length === 0) continue;
-
-          html += `
-                <div class="category">
-                    <h2>${category} (${categoryFiles.length})</h2>
-                    <ul class="link-list">
-            `;
-
-          categoryFiles.forEach((file) => {
-            // Формируем RAW-ссылку
-            const rawUrl = `https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/${file.name}`;
-            html += `
-                    <li>
-                        <span class="file-name">📄 ${file.name}</span>
-                        <span class="raw-url" id="url-${file.name.replace(/\./g, "-")}">${rawUrl}</span>
-                        <button class="copy-btn" onclick="copyToClipboard('${rawUrl.replace(/'/g, "\\'")}')">📋 Копировать</button>
-                    </li>
-                `;
-          });
-
-          html += `</ul></div>`;
-        }
-
-        container.innerHTML = html;
-      }
-
-      function copyToClipboard(text) {
-        navigator.clipboard
-          .writeText(text)
-          .then(() => {
-            alert("✅ Ссылка скопирована!");
-          })
-          .catch(() => {
-            alert("❌ Не удалось скопировать");
-          });
-      }
-
-      // Запускаем загрузку
-      fetchGitHubFiles();
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
