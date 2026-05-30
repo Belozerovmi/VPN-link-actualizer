@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Актуальные VPN-подписки от igareck</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        background: #0d1117;
+        color: #c9d1d9;
+        padding: 20px;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      h1 {
+        color: #f0f6fc;
+        margin-bottom: 10px;
+      }
+      .subtitle {
+        color: #8b949e;
+        margin-bottom: 30px;
+      }
+      .last-update {
+        background: #161b22;
+        padding: 10px 15px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        font-size: 14px;
+        border-left: 3px solid #3fb950;
+      }
+      .category {
+        background: #161b22;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        border: 1px solid #30363d;
+      }
+      .category h2 {
+        background: #21262d;
+        padding: 15px 20px;
+        font-size: 1.3rem;
+        border-bottom: 1px solid #30363d;
+        color: #f0f6fc;
+      }
+      .link-list {
+        padding: 0;
+        list-style: none;
+      }
+      .link-list li {
+        padding: 15px 20px;
+        border-bottom: 1px solid #30363d;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+      }
+      .link-list li:last-child {
+        border-bottom: none;
+      }
+      .file-name {
+        font-family: "SF Mono", Monaco, "Cascadia Code", monospace;
+        font-size: 14px;
+        color: #79c0ff;
+        word-break: break-word;
+        flex: 1;
+      }
+      .raw-url {
+        font-family: monospace;
+        font-size: 12px;
+        color: #8b949e;
+        background: #0d1117;
+        padding: 8px 12px;
+        border-radius: 6px;
+        word-break: break-all;
+        flex: 2;
+      }
+      .copy-btn {
+        background: #238636;
+        color: white;
+        border: none;
+        padding: 6px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 12px;
+      }
+      .copy-btn:hover {
+        background: #2ea043;
+      }
+      .loading {
+        text-align: center;
+        padding: 40px;
+        color: #8b949e;
+      }
+      .error {
+        color: #f85149;
+        background: #161b22;
+        padding: 20px;
+        border-radius: 8px;
+      }
+      a {
+        color: #58a6ff;
+        text-decoration: none;
+      }
+      @media (max-width: 768px) {
+        .link-list li {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .raw-url {
+          width: 100%;
+        }
+        .copy-btn {
+          align-self: flex-end;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🔗 Актуальные подписки от igareck</h1>
+      <p class="subtitle">
+        Автоматически обновляемые RAW-ссылки для обхода блокировок
+      </p>
+      <div id="last-update" class="last-update">
+        ⏳ Загрузка списка файлов...
+      </div>
+      <div id="categories"></div>
+    </div>
+
+    <script>
+      // Получаем список файлов через GitHub API
+      async function fetchGitHubFiles() {
+        const apiUrl =
+          "https://api.github.com/repos/igareck/vpn-configs-for-russia/contents/";
+
+        try {
+          const response = await fetch(apiUrl, {
+            headers: {
+              Accept: "application/vnd.github.v3+json",
+              "User-Agent": "igareck-links-site",
+            },
+          });
+
+          if (!response.ok) throw new Error(`Ошибка API: ${response.status}`);
+
+          const files = await response.json();
+
+          // Фильтруем только .txt файлы (подписки)
+          const txtFiles = files.filter(
+            (file) => file.name.endsWith(".txt") && file.type === "file",
+          );
+
+          // Сортируем по имени
+          txtFiles.sort((a, b) => a.name.localeCompare(b.name));
+
+          displayFiles(txtFiles);
+        } catch (error) {
+          console.error("Ошибка загрузки:", error);
+          document.getElementById("last-update").innerHTML =
+            "❌ Не удалось загрузить список файлов. Попробуйте обновить страницу.";
+          document.getElementById("last-update").style.borderLeftColor =
+            "#f85149";
+        }
+      }
+
+      function displayFiles(files) {
+        const container = document.getElementById("categories");
+        const lastUpdate = document.getElementById("last-update");
+
+        const now = new Date();
+        lastUpdate.innerHTML = `📅 Актуально на: ${now.toLocaleString("ru-RU")}<br>📁 Найдено файлов: ${files.length}`;
+
+        if (files.length === 0) {
+          container.innerHTML =
+            '<div class="error">⚠️ Файлы не найдены. Возможно, репозиторий временно недоступен.</div>';
+          return;
+        }
+
+        // Группируем по категориям
+        const groups = {
+          "⚫ ЧЁРНЫЕ СПИСКИ (обход блокировок)": [],
+          "⚪ БЕЛЫЕ СПИСКИ (обход белых списков)": [],
+          "🧅 TOR BRIDGES": [],
+          "📄 ПРОЧИЕ ФАЙЛЫ": [],
+        };
+
+        files.forEach((file) => {
+          const name = file.name.toUpperCase();
+          if (name.includes("BLACK") || name.includes("SHADOWSOCKS")) {
+            groups["⚫ ЧЁРНЫЕ СПИСКИ (обход блокировок)"].push(file);
+          } else if (
+            name.includes("WHITE") ||
+            name.includes("CIDR") ||
+            name.includes("SNI")
+          ) {
+            groups["⚪ БЕЛЫЕ СПИСКИ (обход белых списков)"].push(file);
+          } else if (name.includes("TOR") || name.includes("BRIDGE")) {
+            groups["🧅 TOR BRIDGES"].push(file);
+          } else {
+            groups["📄 ПРОЧИЕ ФАЙЛЫ"].push(file);
+          }
+        });
+
+        // Отрисовываем категории
+        let html = "";
+        for (const [category, categoryFiles] of Object.entries(groups)) {
+          if (categoryFiles.length === 0) continue;
+
+          html += `
+                <div class="category">
+                    <h2>${category} (${categoryFiles.length})</h2>
+                    <ul class="link-list">
+            `;
+
+          categoryFiles.forEach((file) => {
+            // Формируем RAW-ссылку
+            const rawUrl = `https://raw.githubusercontent.com/igareck/vpn-configs-for-russia/main/${file.name}`;
+            html += `
+                    <li>
+                        <span class="file-name">📄 ${file.name}</span>
+                        <span class="raw-url" id="url-${file.name.replace(/\./g, "-")}">${rawUrl}</span>
+                        <button class="copy-btn" onclick="copyToClipboard('${rawUrl.replace(/'/g, "\\'")}')">📋 Копировать</button>
+                    </li>
+                `;
+          });
+
+          html += `</ul></div>`;
+        }
+
+        container.innerHTML = html;
+      }
+
+      function copyToClipboard(text) {
+        navigator.clipboard
+          .writeText(text)
+          .then(() => {
+            alert("✅ Ссылка скопирована!");
+          })
+          .catch(() => {
+            alert("❌ Не удалось скопировать");
+          });
+      }
+
+      // Запускаем загрузку
+      fetchGitHubFiles();
+    </script>
+  </body>
+</html>
