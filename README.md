@@ -9,8 +9,8 @@
 </p>
 
 <p align="center">
-  <a href="#">
-    <img src="https://img.shields.io/badge/Демо-Скоро-%237c8db5?style=for-the-badge" alt="Демо">
+  <a href="https://belozerovmi.github.io/VPN-link-actualizer/">
+    <img src="https://img.shields.io/badge/Сайт-Открыть-%237c8db5?style=for-the-badge" alt="Сайт-открыть">
   </a>
   <a href="https://github.com/Belozerovmi/VPN-link-actualizer">
     <img src="https://img.shields.io/badge/Репозиторий-Открыть-%237c8db5?style=for-the-badge&logo=github" alt="Репозиторий">
