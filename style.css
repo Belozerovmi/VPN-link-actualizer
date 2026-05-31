@@ -241,6 +241,8 @@ body {
   font-size: 0.85rem;
 }
 .status-time {
+  display: flex;
+  align-items: center;
   font-weight: 500;
   margin-bottom: 4px;
   display: block;
@@ -783,5 +785,905 @@ body {
     color: var(--text-secondary);
     word-break: break-all;
     line-height: 1.4;
+  }
+}
+
+/* ===== ДОПОЛНЕНИЯ ДЛЯ НОВЫХ ЭКРАНОВ ===== */
+
+/* Улучшенная обводка для мобильных устройств */
+.element-tap {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Экран приложений и WARP */
+.apps-screen,
+.warp-screen {
+  display: none;
+  background: var(--bg-base);
+  min-height: 100vh;
+  flex: 1;
+  padding-bottom: 80px;
+}
+
+.apps-screen.open,
+.warp-screen.open {
+  display: block;
+}
+
+.apps-header,
+.warp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 12px;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: var(--bg-base);
+  z-index: 10;
+}
+
+.apps-title,
+.warp-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+
+.apps-close,
+.warp-close,
+.guide-close {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 10px;
+  transition: all var(--transition);
+}
+
+.apps-close:hover,
+.warp-close:hover,
+.guide-close:hover {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+}
+
+.apps-body,
+.warp-body {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Переключатель платформы */
+.platform-toggle {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  background: var(--bg-card);
+  padding: 6px;
+  border-radius: 50px;
+  border: 2px solid var(--border);
+}
+
+.platform-btn {
+  flex: 1;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition);
+  font-family: inherit;
+}
+
+.platform-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+.platform-content {
+  display: none;
+}
+
+.platform-content.active {
+  display: block;
+  animation: fadeSlideUp 0.3s ease;
+}
+
+/* Карточки приложений */
+.app-card {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.app-card-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: var(--bg-elevated);
+  border-bottom: 2px solid var(--border);
+}
+
+.app-card-header img {
+  width: 32px;
+  height: 32px;
+}
+
+.app-card-header svg {
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.app-card-header h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.app-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  padding: 2px 8px;
+  background: var(--bg-card);
+  border-radius: 20px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+.app-card-content {
+  padding: 18px;
+}
+
+.app-card-content ol,
+.setup-step ol {
+  margin-left: 20px;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.app-card-content li {
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+.app-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin: 12px 0;
+  transition: background var(--transition);
+}
+
+.app-link:hover {
+  background: var(--green-hover);
+}
+
+.setup-step {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 2px solid var(--border);
+}
+
+.setup-step p {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* Плейсхолдеры для скриншотов */
+.screenshot-placeholder,
+.screenshot-placeholder-small {
+  background: var(--bg-elevated);
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.app-instruction-pic {
+  width: 100%;
+  border-radius: 15px;
+}
+
+.screenshot-placeholder svg,
+.screenshot-placeholder-small svg {
+  color: var(--accent-soft);
+  opacity: 0.6;
+}
+
+.screenshot-placeholder-small {
+  padding: 12px;
+  flex-direction: row;
+  justify-content: center;
+  gap: 12px;
+}
+
+.conf-inner-flex {
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* ===== УЛУЧШЕННЫЕ СТИЛИ ДЛЯ WARP ГЕНЕРАТОРА ===== */
+
+/* WARP кнопки */
+.warp-quick-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.warp-quick-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.warp-quick-btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.warp-quick-btn:hover::before {
+  left: 100%;
+}
+
+.warp-quick-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+}
+
+.warp-quick-btn.generating {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.warp-quick-btn.generating svg {
+  animation: spin 1s linear infinite;
+}
+
+.warp-quick-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.warp-quick-btn:hover svg {
+  transform: scale(1.05);
+}
+
+.global-btn:hover {
+  background: linear-gradient(135deg, rgba(124, 141, 181, 0.1), transparent);
+}
+
+.ru-skip-btn:hover {
+  background: linear-gradient(135deg, rgba(87, 171, 90, 0.1), transparent);
+}
+
+.quick-btn-content {
+  flex: 1;
+}
+
+.quick-btn-title {
+  color: var(--text-primary);
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.quick-btn-desc {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+}
+
+/* Статус генерации */
+.warp-status {
+  background: var(--bg-elevated);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition);
+}
+
+.warp-status::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  display: inline-block;
+  transition: all var(--transition);
+}
+
+.warp-status.loading {
+  background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.warp-status.loading::before {
+  background: var(--accent);
+  animation: pulse 1s ease-in-out infinite;
+}
+
+.warp-status.success {
+  background: linear-gradient(
+    135deg,
+    rgba(87, 171, 90, 0.15),
+    var(--bg-elevated)
+  );
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.warp-status.success::before {
+  background: var(--green);
+  box-shadow: 0 0 8px var(--green);
+}
+
+.warp-status.error {
+  background: linear-gradient(
+    135deg,
+    rgba(229, 83, 75, 0.15),
+    var(--bg-elevated)
+  );
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.warp-status.error::before {
+  background: var(--red);
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}
+
+/* Прогресс бар */
+.warp-progress {
+  margin-bottom: 24px;
+  display: none;
+}
+
+.warp-progress.active {
+  display: block;
+  animation: fadeSlideUp 0.3s ease;
+}
+
+.progress-bar-container {
+  background: var(--bg-surface);
+  border: 2px solid var(--border);
+  border-radius: 40px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-soft));
+  border-radius: 40px;
+  transition: width 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.progress-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
+.progress-step {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.progress-step.active {
+  color: var(--accent);
+}
+
+.progress-step.completed {
+  color: var(--green);
+}
+
+.progress-step svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Расширенные настройки */
+.advanced-settings {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+}
+
+.advanced-settings summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  list-style: none;
+}
+
+.advanced-settings summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary-arrow {
+  margin-left: auto;
+  transition: transform var(--transition);
+}
+
+.advanced-settings[open] .summary-arrow {
+  transform: rotate(180deg);
+}
+
+.advanced-fields {
+  padding: 0 20px 20px;
+  display: grid;
+  gap: 16px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.input-group input {
+  background: var(--bg-surface);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 12px;
+  color: var(--text-primary);
+  font-family: monospace;
+  font-size: 0.8rem;
+  transition: all var(--transition);
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Результат генерации */
+.warp-result {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 24px;
+  overflow: hidden;
+  animation: slideDown 0.4s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: linear-gradient(135deg, var(--bg-elevated), var(--bg-card));
+  border-bottom: 2px solid var(--border);
+  font-weight: 500;
+  font-size: 0.85rem;
+}
+
+/* Кнопка скачивания */
+.download-config-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--green), var(--green-hover));
+  color: #fff;
+  border: none;
+  border-radius: 40px;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 2px 8px rgba(87, 171, 90, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.download-config-btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s,
+    height 0.6s;
+}
+
+.download-config-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.download-config-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(87, 171, 90, 0.5);
+}
+
+.download-config-btn:active {
+  transform: translateY(0);
+}
+
+.download-config-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.download-config-btn:hover svg {
+  transform: translateY(2px);
+}
+
+.copy-config-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background var(--transition);
+}
+
+.copy-config-btn:hover {
+  background: var(--green-hover);
+}
+
+.copy-config-btn.copied {
+  background: var(--green-hover);
+}
+
+.copy-config-btn.copied svg {
+  animation: checkmark 0.3s ease;
+}
+
+@keyframes checkmark {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+#configOutput {
+  padding: 18px;
+  margin: 0;
+  font-family: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  font-size: 0.7rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-break: break-all;
+  background: var(--bg-surface);
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.warp-instructions {
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+
+.warp-instructions ol {
+  margin-left: 20px;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.warp-instructions li {
+  margin-bottom: 6px;
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+}
+
+/* Адаптив для WARP */
+@media (max-width: 600px) {
+  .apps-body,
+  .warp-body {
+    padding: 16px;
+  }
+
+  .warp-quick-btn {
+    padding: 16px;
+  }
+
+  .quick-btn-title {
+    font-size: 0.9rem;
+  }
+
+  .advanced-fields {
+    gap: 12px;
+  }
+
+  .input-group input {
+    padding: 10px;
+  }
+
+  .platform-btn {
+    padding: 8px 12px;
+    font-size: 0.8rem;
+  }
+
+  .download-config-btn {
+    padding: 10px 20px;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===== ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ КНОПОК И АККОРДЕОНА ===== */
+
+/* Кнопки-карточки WARP */
+.warp-quick-btn {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px;
+  background: var(--bg-card);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all var(--transition);
+  text-align: left;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-icon {
+  flex-shrink: 0;
+  color: var(--accent);
+}
+
+.btn-arrow {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform var(--transition);
+}
+
+.warp-quick-btn:hover .btn-arrow {
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+/* Аккордеон для результата */
+.result-accordion {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--bg-elevated);
+  border: none;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-primary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.result-accordion:hover {
+  background: var(--bg-card);
+}
+
+.result-accordion .accordion-arrow {
+  transition: transform var(--transition);
+}
+
+.result-accordion.open .accordion-arrow {
+  transform: rotate(180deg);
+}
+
+.result-content {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.result-footer {
+  padding: 16px 18px;
+  border-top: 2px solid var(--border);
+  background: var(--bg-elevated);
+  display: flex;
+  justify-content: center;
+}
+
+/* Единый стиль для кнопок копирования и скачивания */
+.copy-btn,
+.download-config-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.copy-btn:hover,
+.download-config-btn:hover {
+  background: var(--green-hover);
+  transform: translateY(-1px);
+}
+
+/* Убираем обводку при клике на навигацию и платформенные кнопки */
+.nav-item,
+.platform-btn,
+.warp-quick-btn,
+.result-accordion {
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+}
+
+.nav-item:focus,
+.platform-btn:focus,
+.warp-quick-btn:focus,
+.result-accordion:focus {
+  outline: none !important;
+}
+
+/* Активный стиль для навигации только через цвет */
+.nav-item.active svg {
+  color: var(--accent);
+}
+
+.nav-item.active span {
+  color: var(--accent);
+}
+
+/* Платформенные кнопки */
+.platform-btn {
+  -webkit-tap-highlight-color: transparent;
+  outline: none !important;
+}
+
+.platform-btn:focus {
+  outline: none !important;
+}
+
+.platform-btn.active {
+  background: var(--accent);
+  color: #fff;
+}
+
+@media (max-width: 500px) {
+  .app-link {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
   }
 }
